@@ -1,0 +1,22 @@
+/* Estils bàsics per a la taula */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estil per a les imatges */
+img {
+    width: 100px;
+    height: 100px;
+}
+
+/* Estil per als enllaços */
+a {
+    text-decoration: none;
+}
