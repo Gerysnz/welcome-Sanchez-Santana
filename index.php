@@ -1,22 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Welcome 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-        <h1>Projecte Welcome 1</h1>
-        <ul>
-        <?php
-        $imgs = scandir("./img",SCANDIR_SORT_ASCENDING);
-        foreach( $imgs as $img ) {
-            if( $img=="." || $img==".." )
-                continue;
-            if( substr($img,-3)=="jpg" or substr($img,-3)=="png"){
-                $name = substr($img,0,-4);
-            }else if (substr($img,-4)=="jpeg") {
-                $name = substr($img,0,-5);
+    <header>
+        <h1>Proyecto Welcome 1 - Gerard Sanchez y Valeria Santana</h1>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Imagen</th>
+            </tr>
+            <?php
+            $profiles = scandir("./profile", SCANDIR_SORT_ASCENDING);
+            $imageFolder = './img/';
+            foreach ($profiles as $profile) {
+                if ($profile == "." || $profile == "..") continue;
+                $name = pathinfo($profile, PATHINFO_FILENAME);
+                $imagePath = $imageFolder . $name . '.jpg';
+                if (!file_exists($imagePath)) {
+                    $imagePath = $imageFolder . $name . '.jpeg';
+                }
+                if (!file_exists($imagePath)) {
+                    $imagePath = $imageFolder . $name . '.png';
+                }
+                $imgTag = file_exists($imagePath) ? "<img src='$imagePath'>" : "<div>No disponible</div>";
+                echo "<tr>";
+                echo "<td><a href='profile/$profile'>$name</a></td>";
+                echo "<td>$imgTag</td>";
+                echo "</tr>";
             }
-            echo "<a href='profile/$name.html'>";
-            echo "<img src='img/$img' width='130'>";
-            echo $name."</a>";
-            echo "<div></div>";
-
-        }
-    ?>
-    </il>
+            ?>
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Proyecto Welcome</p>
+    </footer>
 </body>
+</html>
+
