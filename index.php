@@ -1,53 +1,46 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projecte Welcome 1</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Enllaça el fitxer CSS -->
+    <title>Proyecto Welcome 1</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Projecte Welcome 1 - Gerard y Valeria - Llistat d'alumnes</h1>
-    
-    <table>
-        <tr>
+    <header>
+        <h1>Proyecto Welcome 1 - Gerard Sanchez y Valeria Santana</h1>
+    </header>
+    <main>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Imagen</th>
+            </tr>
             <?php
-            // Definir la carpeta de les fitxes HTML
-            $html_dir = "./profile/";
-            $html_files = scandir($html_dir); // Obtenir fitxers HTML
-            $col_count = 0;
-            $cols_per_row = 10; // 10 columnes per fila
-
-            foreach ($html_files as $file) {
-                // Comprovar si el fitxer és HTML
-                if (substr($file, -5) == ".html") {
-                    $name = substr($file, 0, -5); // Nom sense extensió
-                    $image_path = "./img/" . $name . ".jpg"; // Ruta de la imatge
-                    $image_exists = file_exists($image_path); // Comprovar si hi ha imatge
-
-                    // Crear una cel·la per a cada alumne
-                    echo "<td>";
-                    echo "<a href='profile/$file'>$name</a>"; // Enllaç a la fitxa HTML
-
-                    // Mostrar imatge si existeix, sinó, text "Sense imatge"
-                    if ($image_exists) {
-                        echo "<br><img src='$image_path' alt='Imatge de $name'>";
-                    } else {
-                        echo "<br><span>Sense imatge</span>";
-                    }
-
-                    echo "</td>";
-
-                    // Controlar el nombre de columnes
-                    $col_count++;
-                    if ($col_count % $cols_per_row == 0) {
-                        echo "</tr><tr>"; // Nova fila després de 10 columnes
-                    }
+            $profiles = scandir("./profile", SCANDIR_SORT_ASCENDING);
+            $imageFolder = './img/';
+            foreach ($profiles as $profile) {
+                if ($profile == "." || $profile == "..") continue;
+                $name = pathinfo($profile, PATHINFO_FILENAME);
+                $imagePath = $imageFolder . $name . '.jpg';
+                if (!file_exists($imagePath)) {
+                    $imagePath = $imageFolder . $name . '.jpeg';
                 }
+                if (!file_exists($imagePath)) {
+                    $imagePath = $imageFolder . $name . '.png';
+                }
+                $imgTag = file_exists($imagePath) ? "<img src='$imagePath'>" : "<div>No disponible</div>";
+                echo "<tr>";
+                echo "<td><a href='profile/$profile'>$name</a></td>";
+                echo "<td>$imgTag</td>";
+                echo "</tr>";
             }
             ?>
-        </tr>
-    </table>
-
+        </table>
+    </main>
+    <footer>
+        <p>&copy; 2024 Proyecto Welcome</p>
+    </footer>
 </body>
 </html>
+
