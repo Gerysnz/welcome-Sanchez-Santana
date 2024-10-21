@@ -1,22 +1,29 @@
-/* Estils bàsics per a la taula */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
-td {
-    border: 1px solid black;
-    padding: 10px;
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
     text-align: center;
 }
 
-/* Estil per a les imatges */
-img {
-    width: 100px;
-    height: 100px;
+th {
+    background-color: #f2f2f2;
 }
 
-/* Estil per als enllaços */
-a {
-    text-decoration: none;
+img {
+    width: 130px;
+    height: auto;
 }
