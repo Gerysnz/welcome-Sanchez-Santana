@@ -26,10 +26,17 @@
                     $imagePath = $imageFolder . $name . '.png';
                 }
                 $imgTag = file_exists($imagePath) ? "<img src='$imagePath' alt='$name'>" : "<div>No disponible</div>";
+<<<<<<< HEAD
                 echo "<div class='profile-item'>";
                 echo "<a href='profiles/$profile'>$name</a><br>";
                 echo $imgTag;
                 echo "</div>";
+=======
+                echo "<tr>";
+                echo "<td><a href='profiles/$profile'>$name</a></td>";
+                echo "<td>$imgTag</td>";
+                echo "</tr>";
+>>>>>>> main
             }
             ?>
         </div>
