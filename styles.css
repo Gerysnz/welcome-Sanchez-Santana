@@ -4,15 +4,9 @@ body {
     background-color: #e0f7fa;
 }
 
-<<<<<<< HEAD
 header, footer {
     text-align: center;
     margin-bottom: 20px;
-=======
-table {
-    border-collapse: collapse;
-    width: 100%;
->>>>>>> main
 }
 
 .profiles {
@@ -30,9 +24,4 @@ table {
 img {
     max-width: 100px; /* Ancho máximo de las imágenes */
     height: auto; /* Mantiene la proporción */
-}
-
-img {
-    max-width: 100px;
-    height: auto;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Welcome 1</title>
-    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo CSS -->
 </head>
 <body>
     <header>
@@ -26,17 +26,10 @@
                     $imagePath = $imageFolder . $name . '.png';
                 }
                 $imgTag = file_exists($imagePath) ? "<img src='$imagePath' alt='$name'>" : "<div>No disponible</div>";
-<<<<<<< HEAD
                 echo "<div class='profile-item'>";
                 echo "<a href='profiles/$profile'>$name</a><br>";
                 echo $imgTag;
                 echo "</div>";
-=======
-                echo "<tr>";
-                echo "<td><a href='profiles/$profile'>$name</a></td>";
-                echo "<td>$imgTag</td>";
-                echo "</tr>";
->>>>>>> main
             }
             ?>
         </div>
