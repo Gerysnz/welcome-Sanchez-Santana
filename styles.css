@@ -4,18 +4,24 @@ body {
     background-color: #e0f7fa;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
+header, footer {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
+.profiles {
+    column-count: 5; /* Establece 5 columnas */
+    column-gap: 20px; /* Espacio entre columnas */
+    text-align: justify; /* Justifica el texto */
+}
+
+.profile-item {
+    break-inside: avoid; /* Evita que los elementos se dividan en columnas */
+    margin-bottom: 20px; /* Espacio entre elementos */
+    text-align: center; /* Centra el texto */
 }
 
 img {
-    max-width: 100px;
-    height: auto;
+    max-width: 100px; /* Ancho máximo de las imágenes */
+    height: auto; /* Mantiene la proporción */
 }

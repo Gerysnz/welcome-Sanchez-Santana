@@ -4,18 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Welcome 1</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
     <header>
         <h1>Proyecto Welcome 1 - Gerard Sanchez y Valeria Santana</h1>
     </header>
     <main>
-        <table>
-            <tr>
-                <th>Nombre</th>
-                <th>Imagen</th>
-            </tr>
+        <div class="profiles">
             <?php
             $profiles = scandir("./profiles", SCANDIR_SORT_ASCENDING);
             $imageFolder = './images/';
@@ -30,13 +26,13 @@
                     $imagePath = $imageFolder . $name . '.png';
                 }
                 $imgTag = file_exists($imagePath) ? "<img src='$imagePath' alt='$name'>" : "<div>No disponible</div>";
-                echo "<tr>";
-                echo "<td><a href='profiles/$profile'>$name</a></td>";
-                echo "<td>$imgTag</td>";
-                echo "</tr>";
+                echo "<div class='profile-item'>";
+                echo "<a href='profiles/$profile'>$name</a><br>";
+                echo $imgTag;
+                echo "</div>";
             }
             ?>
-        </table>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 Proyecto Welcome</p>
