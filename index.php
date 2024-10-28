@@ -17,8 +17,8 @@
                 <th>Imagen</th>
             </tr>
             <?php
-            $profiles = scandir("./profile", SCANDIR_SORT_ASCENDING);
-            $imageFolder = './img/';
+            $profiles = scandir("./profiles", SCANDIR_SORT_ASCENDING);
+            $imageFolder = './images/';
             foreach ($profiles as $profile) {
                 if ($profile == "." || $profile == "..") continue;
                 $name = pathinfo($profile, PATHINFO_FILENAME);
@@ -29,9 +29,9 @@
                 if (!file_exists($imagePath)) {
                     $imagePath = $imageFolder . $name . '.png';
                 }
-                $imgTag = file_exists($imagePath) ? "<img src='$imagePath'>" : "<div>No disponible</div>";
+                $imgTag = file_exists($imagePath) ? "<img src='$imagePath' alt='$name'>" : "<div>No disponible</div>";
                 echo "<tr>";
-                echo "<td><a href='profile/$profile'>$name</a></td>";
+                echo "<td><a href='profiles/$profile'>$name</a></td>";
                 echo "<td>$imgTag</td>";
                 echo "</tr>";
             }
@@ -43,4 +43,3 @@
     </footer>
 </body>
 </html>
-
