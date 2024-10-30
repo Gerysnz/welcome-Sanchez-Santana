@@ -11,27 +11,40 @@
         <h1>Proyecto Welcome 1 - Gerard Sanchez y Valeria Santana</h1>
     </header>
     <main>
-        <div class="profiles">
-            <?php
-            $profiles = scandir("./profiles", SCANDIR_SORT_ASCENDING);
-            $imageFolder = './images/';
-            foreach ($profiles as $profile) {
-                if ($profile == "." || $profile == "..") continue;
-                $name = pathinfo($profile, PATHINFO_FILENAME);
-                $imagePath = $imageFolder . $name . '.jpg';
-                if (!file_exists($imagePath)) {
-                    $imagePath = $imageFolder . $name . '.jpeg';
+        <div class="table-container">
+            <table>
+                <?php
+                $profiles = scandir("./profiles", SCANDIR_SORT_ASCENDING);
+                $imageFolder = './images/';
+                $columnCount = 0;
+                
+                echo "<tr>";
+                foreach ($profiles as $profile) {
+                    if ($profile == "." || $profile == "..") continue;
+
+                    $name = pathinfo($profile, PATHINFO_FILENAME);
+                    $imagePath = $imageFolder . $name . '.jpg';
+                    if (!file_exists($imagePath)) {
+                        $imagePath = $imageFolder . $name . '.jpeg';
+                    }
+                    if (!file_exists($imagePath)) {
+                        $imagePath = $imageFolder . $name . '.png';
+                    }
+
+                    $imgTag = file_exists($imagePath) ? "<img src='$imagePath' alt='$name'>" : "<div>No disponible</div>";
+                    echo "<td class='profile-item'>";
+                    echo "<a href='profiles/$profile'>$name</a><br>";
+                    echo $imgTag;
+                    echo "</td>";
+
+                    $columnCount++;
+                    if ($columnCount % 5 == 0) {
+                        echo "</tr><tr>";
+                    }
                 }
-                if (!file_exists($imagePath)) {
-                    $imagePath = $imageFolder . $name . '.png';
-                }
-                $imgTag = file_exists($imagePath) ? "<img src='$imagePath' alt='$name'>" : "<div>No disponible</div>";
-                echo "<div class='profile-item'>";
-                echo "<a href='profiles/$profile'>$name</a><br>";
-                echo $imgTag;
-                echo "</div>";
-            }
-            ?>
+                echo "</tr>";
+                ?>
+            </table>
         </div>
     </main>
     <footer>
